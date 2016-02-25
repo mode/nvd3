@@ -4052,7 +4052,7 @@ nv.models.discreteBar = function() {
                 })
                 .select('rect')
                 .attr('height', function(d,i) {
-                    return  Math.max(Math.abs(y(getY(d,i)) - y(0)), 1)
+                    return  Math.max(Math.abs(y(getY(d,i)) - y(0)), 0)
                 });
 
 
@@ -5063,7 +5063,7 @@ nv.models.historicalBar = function() {
                         y(getY(d,i));
                     return nv.utils.NaNtoZero(rval);
                 })
-                .attr('height', function(d,i) { return nv.utils.NaNtoZero(Math.max(Math.abs(y(getY(d,i)) - y(0)),1)) });
+                .attr('height', function(d,i) { return nv.utils.NaNtoZero(Math.max(Math.abs(y(getY(d,i)) - y(0)),0)) });
 
         });
 
@@ -7838,7 +7838,7 @@ nv.models.multiBar = function() {
                             y(getY(d,i)) || 0;
                     })
                     .attr('height', function(d,i) {
-                        return Math.max(Math.abs(y(getY(d,i)) - y(0)),1) || 0;
+                        return Math.max(Math.abs(y(getY(d,i)) - y(0)),0) || 0;
                     });
             }
 
@@ -8685,7 +8685,7 @@ nv.models.multiBarHorizontal = function() {
                     .select('rect')
                     .attr('height', x.rangeBand() / data.length )
                     .attr('width', function(d,i) {
-                        return Math.max(Math.abs(y(getY(d,i)) - y(0)),1) || 0
+                        return Math.max(Math.abs(y(getY(d,i)) - y(0)),0) || 0
                     });
 
             //store old scales for use in transitions on update
